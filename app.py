@@ -28,13 +28,5 @@ def ask_llama(user_input):
     except Exception as e:
         return f"Ошибка: {str(e)}"
 
-ui = gr.Interface(
-    fn=ask_llama,
-    inputs=gr.Textbox(lines=4, placeholder="Спросите о поведении, страхах, эмоциях..."),
-    outputs="text",
-    title="🦙 MentaLLama — психолог для теннисных родителей",
-    description="Помогает понять чувства ребёнка через стиль Mental Notes.",
-    theme="soft",
-)
-
-ui.launch()
+if __name__ == "__main__":
+    ui.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))
